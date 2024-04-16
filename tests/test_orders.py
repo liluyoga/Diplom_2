@@ -1,13 +1,16 @@
-import requests
 import json
-from data import AdditionalVariables
+
 import allure
+import requests
+
+from data import AdditionalVariables
 
 
 class TestOrders:
 
     @allure.title("Проверка возможности создания заказа с корректными ингредиентами (с авторизацией)")
-    def test_create_order_with_authorization_and_ingredients_success(self, generate_and_register_new_user, choice_ingredients_for_burger):
+    def test_create_order_with_authorization_and_ingredients_success(self, generate_and_register_new_user,
+                                                                     choice_ingredients_for_burger):
         _, token = generate_and_register_new_user
         payload = {
             "ingredients": choice_ingredients_for_burger

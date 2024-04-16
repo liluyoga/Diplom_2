@@ -1,7 +1,9 @@
-import pytest
-import requests
 import json
 import random
+
+import pytest
+import requests
+
 from data import AdditionalVariables
 from helper import UserData
 
@@ -18,7 +20,8 @@ def generate_new_user_data():
         "password": user_data.get("password")
     }
 
-    response = requests.post(AdditionalVariables.URL_API_LOGIN, headers={"Content-type": "application/json"}, data=json.dumps(payload))
+    response = requests.post(AdditionalVariables.URL_API_LOGIN, headers={"Content-type": "application/json"},
+                             data=json.dumps(payload))
     token = response.json()["accessToken"]
     requests.delete(AdditionalVariables.URL_API_USER, headers={"Authorization": f'{token}'})
 
@@ -26,7 +29,8 @@ def generate_new_user_data():
 @pytest.fixture(scope='function')
 def generate_and_register_new_user():
     user_data = UserData.generate_new_user_data()
-    response = requests.post(AdditionalVariables.URL_API_REGISTER, headers={"Content-type": "application/json"}, data=json.dumps(user_data))
+    response = requests.post(AdditionalVariables.URL_API_REGISTER, headers={"Content-type": "application/json"},
+                             data=json.dumps(user_data))
     token = response.json()["accessToken"]
 
     yield user_data, token
@@ -59,7 +63,8 @@ def create_user_and_order(generate_and_register_new_user, choice_ingredients_for
     payload = {
         "ingredients": choice_ingredients_for_burger
     }
-    requests.post(AdditionalVariables.URL_API_ORDERS, headers={"Content-type": "application/json", "Authorization": f'{token}'}, data=json.dumps(payload))
+    requests.post(AdditionalVariables.URL_API_ORDERS,
+                  headers={"Content-type": "application/json", "Authorization": f'{token}'}, data=json.dumps(payload))
 
     # возвращаем токен нового пользователя с заказом для теста
     return token

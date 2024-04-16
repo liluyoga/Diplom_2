@@ -1,7 +1,9 @@
-import requests
 import json
-from data import AdditionalVariables
+
 import allure
+import requests
+
+from data import AdditionalVariables
 
 
 class TestLogin:

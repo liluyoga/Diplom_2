@@ -1,5 +1,4 @@
 class AdditionalVariables:
-
     URL = 'https://stellarburgers.nomoreparties.site'
     URL_API_LOGIN = 'https://stellarburgers.nomoreparties.site/api/auth/login'
     URL_API_USER = 'https://stellarburgers.nomoreparties.site/api/auth/user'

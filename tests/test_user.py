@@ -1,9 +1,11 @@
-import requests
 import json
+
+import allure
 import pytest
+import requests
+
 from data import AdditionalVariables
 from helper import UserData
-import allure
 
 
 class TestUser:
